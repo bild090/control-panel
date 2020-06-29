@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="RobotControl.css">
+    <link rel="stylesheet" href="control panel.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <title>hiiiii</title>
+
+    <script>
+
+        $(document).ready(function(){
+            $("#form").submit(function(event){
+                event.preventDefault();
+                var right=$("#right").val();
+                var left=$("#left").val();
+                var forward=$("#forward").val();
+                var submit=$("#submit").val();
+                $("#form-massge").load("insert.php",{
+                    right:right,
+                    left:left,
+                    forward:forward,
+                    submit:submit
+                });
+            });
+        });
+       
+       
+    </script>
+</head>
+<body>
+
+    <div id="header">
+            <div class="HeaderTitel">
+                <h1> Robot Controler </h3>
+            </div>
+            <div class="icon" >
+                <img  src="robot1.png" alt="robot pic here" width="60px" height="60px">
+            </div>
+        
+    </div>
+
+    <form id="form" action="insert.php"  method="POST" >
+        <div>Right:
+            <input class="inpu-feild input-R-L" type="text" name="right"  id="right" placeholder="Enter number in meter">
+        </div>
+        <div>Forward:
+            <input class="inpu-feild" type="text" name="forward" id="forward" placeholder="Enter number in meter">
+        </div>
+
+        <div>Left:
+            <input class="inpu-feild input-R-L" type="text" name="left" id="left" placeholder="Enter number in meter">
+        </div>
+
+        <div>
+            <input type="submit" value="save" id="submit"/>
+            <button type="button" onclick="delet();"> Delete</button>
+            <button type="button" onclick="start();">Start</button>  
+            <h2 style="display: inline-block;margin-left: 24%;">Drowing here</h2>
+        </div>
+    </form>
+    <p id="form-massge"></p>
+           
+   
+    <div>
+        <canvas id="drowCont"></canvas>
+    </div>
+    
+    <table>
+        
+        <tr>    
+            <td>direction</td>
+            <td>distance</td>
+        </tr>
+        <tr>
+            <td id="direction1"></td>
+            <td id="distance1"></td>
+        </tr>
+
+        <tr>
+            <td id="direction2"></td>
+            <td id="distance2"></td>
+        </tr>
+
+        <tr>
+            <td id="direction3"></td>
+            <td id="distance3"></td>
+        </tr>
+
+        <tr>
+            <td id="direction4"></td>
+            <td id="distance4"></td>
+        </tr>
+      
+    </table>
+
+    <script src="insert.js"></script>
+</body>
+
+
+</html>
